@@ -10,7 +10,7 @@ jobs:
 
     steps:
 
-      - name: Say Hello
+      - name: Say hello dosto
         run: echo "Hello Vedant! GitHub Actions is working."
 
       - name: Show current directory
