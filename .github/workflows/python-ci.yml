@@ -1,5 +1,5 @@
 
-name: Python CI Pipeline
+name: Python CI and Docker Build
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  test-and-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,3 +21,9 @@ jobs:
 
       - name: Run Python tests
         run: python -m unittest discover -v
+
+      - name: Build Docker image
+        run: docker build -t python-add-app:latest .
+
+      - name: Test Docker image
+        run: docker run --rm python-add-app:latest
